@@ -1,17 +1,12 @@
+import { faker } from '@faker-js/faker';
 import supertest from 'supertest';
 import app from '../src/app';
-import { faker } from '@faker-js/faker';
-import { prisma } from '../src/database';
 
 const agent = supertest.agent(app);
 const recommendation = {
   name: faker.name.findName(),
   youtubeLink: 'https://youtu.be/qrBz29PeqGI',
 };
-
-/* beforeAll(async () => {
-  await prisma.recommendation.deleteMany({});
-}); */
 
 describe('Api Sucesses suite', () => {
   it('should create a recommendation', async () => {

@@ -18,6 +18,5 @@ jobs:
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:
           working-directory: ./back-end
-          test-script: npm test
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}

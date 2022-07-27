@@ -16,5 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
-with:
-  coverage-file: /back-end/coverage/coverage-final.json
+      with:
+        working-directory: /back-end
+

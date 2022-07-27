@@ -13,10 +13,13 @@ jobs:
       pull-requests: write
       contents: write
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
+      - name: 'Echoing the database URL'
+        uses: actions/checkout@v2
+        run: echo "Database URL: $DATABASE_URL"
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:
           working-directory: ./back-end
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}

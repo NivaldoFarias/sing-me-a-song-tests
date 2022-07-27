@@ -19,3 +19,5 @@ jobs:
         with:
           working-directory: ./back-end
           test-script: npm test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

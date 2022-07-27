@@ -17,8 +17,8 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - name: 'Echoing the database URL'
-        uses: actions/checkout@v2
-        run: echo "Database URL: $DATABASE_URL"
+        run: |
+          echo "Database URL: $DATABASE_URL"
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:

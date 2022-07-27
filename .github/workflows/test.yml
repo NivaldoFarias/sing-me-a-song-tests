@@ -13,9 +13,13 @@ jobs:
       pull-requests: write
       contents: write
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://ajcytjzzhqjudv:1e9c2f3228b29482ad3613cd5bb45c902fe961f609c49570788818e71c93000f@ec2-50-19-255-190.compute-1.amazonaws.com:5432/d5fqubvhk1gqr6
     steps:
+      - name: 'Echoing the database URL'
+        run: |
+          echo "Database URL: $DATABASE_URL"
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:
           working-directory: ./back-end
-

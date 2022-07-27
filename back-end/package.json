@@ -9,10 +9,10 @@
     "ts:start": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts",
-    "test": "npm run prisma:test && npm run jest",
+    "test": "npm run prisma:test && npm run jest:test",
     "dev:test": "dotenv -e .env.test nodemon src/server.ts",
     "prisma:test": "dotenv -e .env.test prisma migrate dev",
-    "jest": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --coverage -- -i"
+    "jest:test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --coverage -- -i"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

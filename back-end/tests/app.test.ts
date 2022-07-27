@@ -1,17 +1,12 @@
+import { faker } from '@faker-js/faker';
 import supertest from 'supertest';
 import app from '../src/app';
-import { faker } from '@faker-js/faker';
-import { prisma } from '../src/database';
 
 const agent = supertest.agent(app);
 const recommendation = {
   name: faker.name.findName(),
   youtubeLink: 'https://youtu.be/qrBz29PeqGI',
 };
-
-/* beforeAll(async () => {
-  await prisma.recommendation.deleteMany({});
-}); */
 
 describe('Api Sucesses suite', () => {
   it('should create a recommendation', async () => {
@@ -20,12 +15,12 @@ describe('Api Sucesses suite', () => {
     expect(response.statusCode).toBe(201);
   });
   it('should upvote a recommendation', async () => {
-    const response = await agent.post('/recommendations/5/upvote');
+    const response = await agent.post('/recommendations/1/upvote');
 
     expect(response.statusCode).toBe(200);
   });
   it('should downvote a recommendation', async () => {
-    const response = await agent.post('/recommendations/5/downvote');
+    const response = await agent.post('/recommendations/1/downvote');
 
     expect(response.statusCode).toBe(200);
   });
@@ -36,7 +31,7 @@ describe('Api Sucesses suite', () => {
     expect(response.body).toHaveProperty('id');
   });
   it('should get a recommendation by id', async () => {
-    const response = await agent.get('/recommendations/5');
+    const response = await agent.get('/recommendations/1');
 
     expect(response.body).toHaveProperty('id');
   });

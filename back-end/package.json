@@ -9,9 +9,37 @@
     "ts:start": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts",
-    "test": "dotenv -e .env.test prisma migrate dev && npm run jest",
-    "jest": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --coverage -- -i",
-    "dev:test": "dotenv -e .env.test nodemon src/server.ts"
+    "test": "npm run prisma:test && npm run jest",
+    "dev:test": "dotenv -e .env.test nodemon src/server.ts",
+    "prisma:test": "dotenv -e .env.test prisma migrate dev",
+    "jest": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --coverage -- -i"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "lines": 80,
+        "branches": 80,
+        "functions": 80,
+        "statements": 80
+      }
+    },
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    },
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    }
   },
   "keywords": [],
   "author": "",

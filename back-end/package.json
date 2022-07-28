@@ -12,7 +12,7 @@
     "test": "npm run prisma:test && npm run jest:test",
     "dev:test": "dotenv -e .env.test nodemon src/server.ts",
     "prisma:test": "dotenv -e .env.test prisma migrate dev",
-    "jest:test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --coverage -- -i"
+    "jest:test": "NODE_OPTIONS=--experimental-vm-modules  jest --coverage -- -i"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

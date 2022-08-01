@@ -25,6 +25,14 @@
   <!-- Badges source: https://dev.to/envoy_/150-badges-for-github-pnk -->
 </div>
 
+</br>
+
+<div align="center">
+
+[![Jest Coverage](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/test.yml)
+
+</div>
+
 <!-- Contact & Study Playlist -->
 
 # Contact & Study Playlist

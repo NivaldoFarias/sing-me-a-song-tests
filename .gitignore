@@ -1,1 +1,3 @@
 .wakatime**
+cypress/videos
+cypress/screenshots

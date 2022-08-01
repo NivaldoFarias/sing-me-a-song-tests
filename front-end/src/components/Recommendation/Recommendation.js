@@ -44,7 +44,7 @@ export default function Recommendation({
 
   return (
     <Container id='cy-recommendation'>
-      <Row>{name}</Row>
+      <Row id='cy-title'>{name}</Row>
       <ReactPlayer
         url={youtubeLink}
         width='100%'

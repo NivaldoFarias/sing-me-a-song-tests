@@ -15,7 +15,7 @@ export default function Menu() {
         Home
       </MenuItem>
 
-      <MenuItem onClick={() => navigate('/top')} id='cy-treding-btn'>
+      <MenuItem onClick={() => navigate('/top')} id='cy-trending-btn'>
         <HiTrendingUp />
         Top
       </MenuItem>

@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('pop', () => {
+  cy.request('POST', 'http://localhost:5000/pop').as('pop');
+});
+
+Cypress.Commands.add('reboot', () => {
+  cy.request('POST', 'http://localhost:5000/reset').as('reboot');
+});

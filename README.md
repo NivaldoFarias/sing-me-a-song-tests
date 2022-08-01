@@ -29,7 +29,8 @@
 
 <div align="center">
 
-[![Jest Coverage](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/test.yml)
+[![Jest Coverage](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/jest.yml/badge.svg?branch=main)](https://github.com/NivaldoFarias/sing-me-a-song-tests/actions/workflows/jest.yml)
+[![sing-me-a-song](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/t4q2d1&style=flat-square&logo=cypress)](https://dashboard.cypress.io/projects/t4q2d1/runs)
 
 </div>
 

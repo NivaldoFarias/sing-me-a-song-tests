@@ -29,7 +29,7 @@
 
 # Contact & Study Playlist
 
-In the following Youtube link I included all Youtube content I used or refered to while studying for this project. Hope you enjoy it!
+In the following Youtube link I included all Youtube content I used or refered to while studying for this project.
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Slack][slack-shield]][slack-url]

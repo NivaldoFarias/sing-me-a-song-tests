@@ -23,12 +23,12 @@ describe('Integration tests suite', () => {
   });
 
   it('should upvote a recommendation', async () => {
-    const response = await agent.post('/recommendations/5/upvote');
+    const response = await agent.post('/recommendations/1/upvote');
 
     expect(response.statusCode).toBe(200);
   });
   it('should downvote a recommendation', async () => {
-    const response = await agent.post('/recommendations/5/downvote');
+    const response = await agent.post('/recommendations/1/downvote');
 
     expect(response.statusCode).toBe(200);
   });
@@ -59,7 +59,7 @@ describe('Integration tests suite', () => {
     expect(response.body).toHaveProperty('id');
   });
   it('should get a recommendation by id', async () => {
-    const response = await agent.get('/recommendations/5');
+    const response = await agent.get('/recommendations/1');
 
     expect(response.body).toHaveProperty('id');
   });

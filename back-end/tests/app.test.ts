@@ -92,20 +92,6 @@ describe('Integration tests suite', () => {
 });
 
 describe('Services test suite', () => {
-  it('should remove if score is less than -5', async () => {
-    jest
-      .spyOn(recommendationRepository, 'updateScore')
-      .mockImplementationOnce((): any => {
-        return mock.fetched;
-      });
-    jest
-      .spyOn(recommendationRepository, 'remove')
-      .mockImplementationOnce((): any => {});
-
-    const request = await recommendationService.downvote(5);
-    expect(request).resolves;
-  });
-
   it('should use greater than filter', async () => {
     jest.spyOn(Math, 'random').mockImplementationOnce(() => 0.5);
     jest
@@ -118,6 +104,7 @@ describe('Services test suite', () => {
     const request = await recommendationService.getRandom();
     expect(request).toEqual(mock.fetched);
   });
+
   it('should use less than or equal to filter', async () => {
     jest.spyOn(Math, 'random').mockImplementationOnce(() => 0.8);
     jest

@@ -8,17 +8,16 @@ on:
       - main
 jobs:
   coverage:
+    environment: coverage
     permissions:
       checks: write
       pull-requests: write
       contents: write
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          touch .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-          cat .env
       - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:
           working-directory: ./back-end

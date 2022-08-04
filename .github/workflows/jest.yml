@@ -15,11 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
-        with:
-          working-directory: ./back-end
       - run: |
           touch .env
           echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
           cat .env
+      - uses: ArtiomTr/jest-coverage-report-action@v2.0.9
+        with:
+          working-directory: ./back-end
+      
   

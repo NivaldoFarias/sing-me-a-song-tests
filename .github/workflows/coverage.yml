@@ -26,9 +26,7 @@ jobs:
       - name: Install root dependencies for server
         uses: bahmutov/npm-install@v1
       - name: Start server in the background
-        run: npm run build && npm start &
-        with:
-          working-directory: ./back-end
+        run: cd ./back-end && npm run build && npm start &
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4
         with:

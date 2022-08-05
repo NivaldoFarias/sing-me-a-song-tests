@@ -27,11 +27,8 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: ./back-end
-      - name: Start server in the background
-        run: cd ./back-end && npm run build && npm start &
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4
         with:
-          build: npm run build
-          start: npm start
+          start: npm start && cd ../back-end && npm run build && npm start &
           working-directory: ./front-end

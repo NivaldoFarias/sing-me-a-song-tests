@@ -1,0 +1,35 @@
+name: 'Jest & Cypress Coverage'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  jest-coverage:
+    environment: coverage
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run Jest coverage tests
+        uses: ArtiomTr/jest-coverage-report-action@v2.0.9
+        with:
+          working-directory: ./back-end
+      - name: Install root dependencies for server
+        uses: bahmutov/npm-install@v1
+      - name: Start server in the background
+        run: npm run build && npm start &
+        with:
+          working-directory: ./back-end
+      - name: Run Cypress coverage tests
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: ./front-end

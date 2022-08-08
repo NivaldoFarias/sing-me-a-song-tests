@@ -6,10 +6,8 @@ on:
   pull_request:
     branches:
       - main
-  repository_dispatch:
-    types: [test]
 jobs:
-  jest-coverage:
+  cypress-coverage:
     environment: coverage
     permissions:
       checks: write
@@ -22,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Start server in the background
-        run: cd ./back-end && npm run build && npm start
+        run: cd ./back-end && npm i && npm start
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4
         with:

@@ -20,7 +20,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Start server in the background
-        run: cd ./back-end && npm i && npm run build && npm start
+        run: |
+          cd ./back-end &&
+          npm i &&
+          npm run build &&
+          npm start &
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4
         with:

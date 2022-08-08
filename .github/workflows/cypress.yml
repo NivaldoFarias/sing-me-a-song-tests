@@ -23,6 +23,7 @@ jobs:
         run: |
           cd back-end &&
           npm install &&
+          npm run build &&
           npm run start &&
           sleep 10 &&
           curl http://localhost:5000 -I

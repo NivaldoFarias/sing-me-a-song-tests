@@ -25,15 +25,10 @@ jobs:
           npm i &&
           npm run build &&
           npm start &
-      - name: Start Web server in the background
-        run: |
-          cd ./front-end &&
-          npm i &&
-          npm run build &&
-          npm start &
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4.2.0
         with:
-          working-directory: ./front-end
-          build: npm run build
           start: npm start
+          build: npm run build
+          wait-on: 'http://localhost:5000'
+          working-directory: ./front-end

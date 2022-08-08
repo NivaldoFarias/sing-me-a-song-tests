@@ -32,6 +32,6 @@ jobs:
           npm run build &&
           npm start &
       - name: Run Cypress coverage tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v4.2.0
         with:
           working-directory: ./front-end

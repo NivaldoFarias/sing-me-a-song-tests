@@ -19,9 +19,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Start server in the background
+      - name: Start API server in the background
         run: |
           cd ./back-end &&
+          npm i &&
+          npm run build &&
+          npm start &
+      - name: Start Web server in the background
+        run: |
+          cd ./front-end &&
           npm i &&
           npm run build &&
           npm start &

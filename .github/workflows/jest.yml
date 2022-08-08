@@ -1,4 +1,4 @@
-name: 'Jest & Cypress Coverage'
+name: 'Jest Coverage'
 on:
   push:
     branches:
@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+  repository_dispatch:
+    types: [test]
 jobs:
   jest-coverage:
     environment: coverage
@@ -23,13 +25,3 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2.0.9
         with:
           working-directory: ./back-end
-      - name: Install root dependencies for server
-        uses: bahmutov/npm-install@v1
-      - name: Start server in the background
-        run: npm run build && npm start &
-        with:
-          working-directory: ./back-end
-      - name: Run Cypress coverage tests
-        uses: cypress-io/github-action@v4
-        with:
-          working-directory: ./front-end

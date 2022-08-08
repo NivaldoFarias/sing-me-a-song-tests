@@ -1,0 +1,29 @@
+name: 'Cypress Coverage'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  repository_dispatch:
+    types: [test]
+jobs:
+  jest-coverage:
+    environment: coverage
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Start server in the background
+        run: cd ./back-end && npm run build && npm start
+      - name: Run Cypress coverage tests
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: ./front-end

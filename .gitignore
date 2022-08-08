@@ -1,3 +1,4 @@
 .wakatime**
 cypress/videos
 cypress/screenshots
+actions-runner

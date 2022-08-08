@@ -1,4 +1,4 @@
-name: 'Cypress Coverage'
+name: 'Jest & Cypress Coverage'
 on:
   push:
     branches:
@@ -6,14 +6,34 @@ on:
   pull_request:
     branches:
       - main
+  repository_dispatch:
+    types: [test]
+
 jobs:
+  jest-coverage:
+    environment: coverage
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+    runs-on: self-hosted
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run Jest coverage tests
+        uses: ArtiomTr/jest-coverage-report-action@v2.0.9
+        with:
+          working-directory: ./back-end
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   cypress-coverage:
     environment: coverage
     permissions:
       checks: write
       pull-requests: write
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
@@ -24,9 +44,7 @@ jobs:
           cd back-end &&
           npm install &&
           npm run build &&
-          npm run start &&
-          sleep 10 &&
-          curl http://localhost:5000 -I
+          npm start &
       - name: Run Cypress coverage tests
         uses: cypress-io/github-action@v4.2.0
         with:
